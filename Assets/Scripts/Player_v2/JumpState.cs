@@ -1,16 +1,15 @@
 using UnityEngine;
 
-public class JumpState : MovingState
+public class JumpState : MoveState
 {
-	public JumpState (PlayerController player) : base(player)
-	{
+	private bool hasDoubleJumped;
 
-	}
+    public JumpState(Player player) : base(player) { }
 
 	public override void Enter()
 	{
 		base.Enter();
-		dash = false;
+		hasDoubleJumped = false;
 		Jump();
 	}
 
@@ -23,21 +22,26 @@ public class JumpState : MovingState
 	public override void HandleInput()
 	{
 		base.HandleInput();
+
+		if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.W)) && !hasDoubleJumped)
+		{
+			hasDoubleJumped = true;
+			Jump();
+		}
 	}
 
 	public override void StateUpdate()
 	{
 		base.StateUpdate();
 
-		if (player.groundedState.isGrounded)
-			player.stateMachine.ChangeState(player.movingState);
-		else if (dash)
-			player.stateMachine.ChangeState(player.dashState);
+		if (player.isGrounded)
+			player.stateMachine.ChangeState(player.moveState);
 	}
 
 	private void Jump()
 	{
 		player.rb2D.velocity = new Vector2(player.rb2D.velocity.x, player.jumpForce);
+		player.anim.SetBool("Fall", false);
 		player.anim.SetBool("Jump", true);
 		player.playerAudio.PlayJumpSound();
 	}

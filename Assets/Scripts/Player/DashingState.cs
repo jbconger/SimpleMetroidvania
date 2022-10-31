@@ -1,11 +1,11 @@
 using UnityEngine;
 
-public class DashState : PlayerState
+public class DashingState : PlayerState
 {
 	private Vector3 dashDirection;
 	private float timeStartedDash;
 
-	public DashState(PlayerController player) : base(player)
+	public DashingState(PlayerController player) : base(player)
 	{
 
 	}

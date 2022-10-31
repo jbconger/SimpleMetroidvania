@@ -13,9 +13,9 @@ public class PlayerController : MonoBehaviour
 	[HideInInspector] public PlayerStateMachine stateMachine;
 	[HideInInspector] public GroundedState groundedState;
 	[HideInInspector] public MovingState movingState;
-	[HideInInspector] public JumpState jumpState;
-	[HideInInspector] public DashState dashState;
-	[HideInInspector] public CrouchState crouchState;
+	[HideInInspector] public JumpingState jumpState;
+	[HideInInspector] public DashingState dashState;
+	[HideInInspector] public CrouchingState crouchState;
 
 	// Movement Parameters
 	[Header("Checks")]
@@ -63,9 +63,9 @@ public class PlayerController : MonoBehaviour
 
 		groundedState = new GroundedState(this);
 		movingState = new MovingState(this);
-		jumpState = new JumpState(this);
-		dashState = new DashState(this);
-		crouchState = new CrouchState(this);
+		jumpState = new JumpingState(this);
+		dashState = new DashingState(this);
+		crouchState = new CrouchingState(this);
 
 		// set start state
 		stateMachine.Initialize(movingState);

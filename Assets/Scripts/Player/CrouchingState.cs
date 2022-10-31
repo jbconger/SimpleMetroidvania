@@ -1,11 +1,11 @@
 using UnityEngine;
 
-public class CrouchState : PlayerState
+public class CrouchingState : PlayerState
 {
 	private bool uncrouch;
 	private CapsuleCollider2D collider;
 
-    public CrouchState(PlayerController player) : base(player)
+    public CrouchingState(PlayerController player) : base(player)
 	{
 		collider = player.GetComponent<CapsuleCollider2D>();
 	}
