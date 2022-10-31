@@ -23,10 +23,14 @@ public class JumpState : MoveState
 	{
 		//base.HandleInput();
 
-		if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Z)) && player.canDoubleJump && !hasDoubleJumped)
+		if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Z)) && player.canDoubleJump)
 		{
-			hasDoubleJumped = true;
-			Jump();
+			if (!hasDoubleJumped)
+			{
+				hasDoubleJumped = true;
+				Jump();
+
+			}
 		}
 	}
 
@@ -34,7 +38,7 @@ public class JumpState : MoveState
 	{
 		base.StateUpdate();
 
-		if (player.isGrounded)
+		if (player.isGrounded && Mathf.Abs(player.rb2D.velocity.y) < 1.5)
 			player.stateMachine.ChangeState(player.moveState);
 	}
 
