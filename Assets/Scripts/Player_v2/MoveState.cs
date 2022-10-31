@@ -21,9 +21,9 @@ public class MoveState : State
 	{
 		base.HandleInput();
 
-		if ((Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S)) && player.isGrounded)
+		if ((Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S)) && player.isGrounded && player.canCrouch)
 			crouch = true;
-		else if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.W)) && player.isGrounded)
+		else if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Z)) && player.isGrounded)
 			jump = true;
 	}
 

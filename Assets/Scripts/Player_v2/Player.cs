@@ -32,8 +32,9 @@ public class Player : MonoBehaviour
 	[HideInInspector] public bool isFacingLeft;
 
 	// Ability Indicators
-	[HideInInspector] public bool canCrouch = false;
-	[HideInInspector] public bool canDoubleJump = false;
+	[Header("Abilities")]
+	[SerializeField] public bool canCrouch = false;
+	[SerializeField] public bool canDoubleJump = false;
 
 	// Movement Parameters
 	[Header("Checks")]
@@ -48,7 +49,7 @@ public class Player : MonoBehaviour
 	[SerializeField] public float moveLerpSpeed = 100;
 
 	[Header("Crouch")]
-	[SerializeField] public float crouchHeight = 1;
+	[SerializeField] public Vector2 crouchSize = new Vector2(0.8f, 0.8f);
 	[SerializeField] public float crouchOffset = -0.5f;
 	[SerializeField] [Range(0,1)] public float crouchMoveSpeed = 0.3f;
 	[HideInInspector] public Vector2 playerSize;

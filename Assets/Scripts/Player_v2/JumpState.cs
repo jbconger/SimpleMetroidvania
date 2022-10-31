@@ -21,9 +21,9 @@ public class JumpState : MoveState
 
 	public override void HandleInput()
 	{
-		base.HandleInput();
+		//base.HandleInput();
 
-		if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.W)) && !hasDoubleJumped)
+		if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Z)) && player.canDoubleJump && !hasDoubleJumped)
 		{
 			hasDoubleJumped = true;
 			Jump();

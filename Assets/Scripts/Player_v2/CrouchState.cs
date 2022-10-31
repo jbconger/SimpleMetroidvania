@@ -65,13 +65,15 @@ public class CrouchState : State
 
 	private void Crouch()
 	{
-		player.playerCollider.size = new Vector2(player.playerSize.x, player.crouchHeight);
+		player.playerCollider.direction = CapsuleDirection2D.Horizontal;
+		player.playerCollider.size = player.crouchSize;
 		player.playerCollider.offset = new Vector2(player.playerOffset.x, player.crouchOffset);
 		player.anim.SetBool("Crouch", true);
 	}
 
 	private void Uncrouch()
 	{
+		player.playerCollider.direction = CapsuleDirection2D.Vertical;
 		player.playerCollider.size = player.playerSize;
 		player.playerCollider.offset = player.playerOffset;
 		player.anim.SetBool("Crouch", false);
